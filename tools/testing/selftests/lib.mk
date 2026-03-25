@@ -145,7 +145,7 @@ clean:
 	$(CLEAN)
 
 # Enables to extend CFLAGS and LDFLAGS from command line, e.g.
-# make USERCFLAGS=-Werror USERLDFLAGS=-static
+# make USERCFLAGS= USERLDFLAGS=-static
 CFLAGS += $(USERCFLAGS)
 LDFLAGS += $(USERLDFLAGS)
 
