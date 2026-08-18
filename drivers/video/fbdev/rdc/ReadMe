@@ -1,0 +1,26 @@
+1. The driver currently can be built as a built-in driver only.
+   Built as a kernel module(.ko) is failed on pass of options
+
+2. the default bootup resolution is 640x480-8bpp
+
+3. driver options can be passed by appending boot option:
+
+   video=rdcfb:opt1,opt2,...
+   
+   options:
+       mode=[xres]x[yres]-[bpp]
+       
+   Example 1 for 800x480 as bootup resolution, use default color depth:
+       kernel  /boot/vmlinuz-2.6.28-16-generic root=UUID=6fea54d8-67ee-4dec-8367-d6bc4d93b74f ro noreplace-paravirt quiet splash video=rdcfb:mode=800x480
+   
+   Example 2 for 800x480-16bpp as bootup resolution:
+       append video=rdcfb:mode=800x480-16
+
+4. menuconfig:
+   built-in "Framebuffer Console support"
+   add and set built-in "CONFIG_FB_RDC" in %source%/drivers/video/Kconfig
+
+5. put driver directory in %source%/drivers/video/rdc
+
+6. Add "obj-$(CONFIG_FB_RDC) += rdc/" into %source%/drivers/video/Makefiel
+

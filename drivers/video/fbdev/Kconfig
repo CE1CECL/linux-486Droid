@@ -1070,6 +1070,15 @@ config FB_S3_DDC
 	help
 	  Say Y here if you want DDC support for your S3 graphics card.
 
+config FB_RDC
+	tristate "RDC M2010/M2012 support"
+	depends on FB && PCI 
+	help
+	  This driver supports RDC M2012/M2010 VGA. 
+
+	  The driver currently can be built as a built-in driver only.
+          Built as a kernel module(.ko) is failed on pass of options
+
 config FB_SAVAGE
 	tristate "S3 Savage support"
 	depends on FB && PCI

@@ -125,3 +125,6 @@ obj-$(CONFIG_FB_SIMPLE)           += simplefb.o
 
 # the test framebuffer is last
 obj-$(CONFIG_FB_VIRTUAL)          += vfb.o
+
+#RDC Frame Buffer Driver
+obj-$(CONFIG_FB_RDC) += rdc/

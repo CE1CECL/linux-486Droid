@@ -1,0 +1,16 @@
+#
+# Makefile for the RDC framebuffer driver (for Linux Kernel 2.6)
+#
+
+
+#obj-$(CONFIG_FB_RDC)		  += rdcfb.o
+obj-m += rdcfb.o
+
+
+rdcfb-y	:= CInt10.o rdcfbdev.o
+
+all:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+ 
+clean:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
