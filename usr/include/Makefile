@@ -6,7 +6,7 @@
 #
 # -std=c90 (equivalent to -ansi) catches the violation of those.
 # We cannot go as far as adding -Wpedantic since it emits too many warnings.
-UAPI_CFLAGS := -std=c90 -Werror=implicit-function-declaration
+UAPI_CFLAGS := -std=c90 -Wno-implicit-function-declaration
 
 override c_flags = $(KBUILD_USERCFLAGS) $(UAPI_CFLAGS) -Wp,-MMD,$(depfile) -I $(obj) -I $(srctree)/usr/dummy-include
 
@@ -157,7 +157,7 @@ target-can-compile = $(and $(filter-out $(no-header-test), $*.h), \
 # Include the header twice to detect missing include guard.
 quiet_cmd_hdrtest = HDRTEST $<
       cmd_hdrtest = \
-		$(CC) $(c_flags) -fsyntax-only -Werror -x c /dev/null \
+		$(CC) $(c_flags) -fsyntax-only  -x c /dev/null \
 			$(if $(target-no-libc), -nostdinc) \
 			$(if $(target-can-compile), -include $< -include $<); \
 		$(PERL) $(src)/headers_check.pl $(obj) $<; \

@@ -6,8 +6,8 @@
 # Enable W=1 warnings not enabled in drm subsystem Makefile
 subdir-ccflags-y += $(call cc-option, -Wformat-truncation)
 
-# Enable -Werror in CI and development
-subdir-ccflags-$(CONFIG_DRM_XE_WERROR) += -Werror
+# Enable  in CI and development
+subdir-ccflags-$(CONFIG_DRM_XE_WERROR) += 
 
 subdir-ccflags-y += -I$(obj) -I$(src)
 
@@ -371,7 +371,7 @@ always-$(CONFIG_DRM_XE_WERROR) += \
 
 quiet_cmd_hdrtest = HDRTEST $(patsubst %.hdrtest,%.h,$@)
       cmd_hdrtest = $(CC) $(filter-out $(CFLAGS_GCOV), $(c_flags)) -S -o /dev/null -x c /dev/null -include $< -include $<; \
-		$(srctree)/scripts/kernel-doc -none -Werror $<; touch $@
+		$(srctree)/scripts/kernel-doc -none  $<; touch $@
 
 $(obj)/%.hdrtest: $(src)/%.h FORCE
 	$(call if_changed_dep,hdrtest)

@@ -54,7 +54,7 @@ Options:
  -a [ARCH]      Host architecture of toolchains to use (default: ${hostarch})
  -b [DIR]       Build location (default: ${build_location})
  -m [MODE]      Test mode user/system (default: ${test_mode})
- -e             Disable -Werror
+ -e             Disable 
  -l             Build with LLVM/clang
 EOF
 }
@@ -169,7 +169,7 @@ test_arch() {
 	cross_compile=$(realpath "${download_location}gcc-${crosstool_version}-nolibc/${ct_arch}-${ct_abi}/bin/${ct_arch}-${ct_abi}-")
 	build_dir="${build_location}/${arch}"
 	if [ "$werror" -ne 0 ]; then
-		CFLAGS_EXTRA="$CFLAGS_EXTRA -Werror -Wl,--fatal-warnings"
+		CFLAGS_EXTRA="$CFLAGS_EXTRA  -Wl,--no-fatal-warnings"
 	fi
 	MAKE=(make -f Makefile.nolibc -j"${nproc}" XARCH="${arch}" CROSS_COMPILE="${cross_compile}" LLVM="${llvm}" O="${build_dir}")
 

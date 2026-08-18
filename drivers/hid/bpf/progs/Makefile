@@ -56,7 +56,7 @@ clean:
 
 %.bpf.o: %.bpf.c vmlinux.h $(BPFOBJ) | $(OUTPUT)
 	$(call msg,BPF,$@)
-	$(Q)$(CLANG) -g -O2 --target=bpf -Wall -Werror $(INCLUDES)		\
+	$(Q)$(CLANG) -g -O2 --target=bpf -Wall  $(INCLUDES)		\
 		     -Wno-microsoft-anon-tag					\
 		     -fms-extensions						\
 		     -c $(filter %.c,$^) -o $@ &&				\

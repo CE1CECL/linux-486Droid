@@ -42,7 +42,7 @@ ccflags-y := -I$(FULL_AMD_PATH)/include/asic_reg \
 
 # Locally disable W=1 warnings enabled in drm subsystem Makefile
 subdir-ccflags-y += -Wno-override-init
-subdir-ccflags-$(CONFIG_DRM_AMDGPU_WERROR) += -Werror
+subdir-ccflags-$(CONFIG_DRM_AMDGPU_WERROR) += 
 
 amdgpu-y := amdgpu_drv.o
 

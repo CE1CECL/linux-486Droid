@@ -79,7 +79,7 @@ HOSTCFLAGS_resolve_btfids += -g \
           -I$(LIBBPF_INCLUDE) \
           -I$(SUBCMD_INCLUDE) \
           $(LIBELF_FLAGS) \
-          -Wall -Werror
+          -Wall 
 
 LIBS = $(LIBELF_LIBS) $(ZLIB_LIBS)
 

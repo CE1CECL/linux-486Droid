@@ -16,7 +16,7 @@ int netdev_debug_event(struct notifier_block *nb, unsigned long event,
 	struct net *net = dev_net(dev);
 	enum netdev_cmd cmd = event;
 
-	/* Keep enum and don't add default to trigger -Werror=switch */
+	/* Keep enum and don't add default to trigger -Wno-switch */
 	switch (cmd) {
 	case NETDEV_XDP_FEAT_CHANGE:
 		netdev_assert_locked(dev);

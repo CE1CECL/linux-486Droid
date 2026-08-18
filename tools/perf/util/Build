@@ -320,7 +320,7 @@ ifeq ($(FLEX_GE_260),1)
   flex_flags := -Wno-redundant-decls -Wno-switch-default -Wno-unused-function -Wno-misleading-indentation
 
   # Some newer clang and gcc version complain about this
-  # util/parse-events-bison.c:1317:9: error: variable 'parse_events_nerrs' set but not used [-Werror,-Wunused-but-set-variable]
+  # util/parse-events-bison.c:1317:9: error: variable 'parse_events_nerrs' set but not used [,-Wunused-but-set-variable]
   #  int yynerrs = 0;
 
   flex_flags += -Wno-unused-but-set-variable
@@ -334,7 +334,7 @@ else
 endif
 
 # Some newer clang and gcc version complain about this
-# util/parse-events-bison.c:1317:9: error: variable 'parse_events_nerrs' set but not used [-Werror,-Wunused-but-set-variable]
+# util/parse-events-bison.c:1317:9: error: variable 'parse_events_nerrs' set but not used [,-Wunused-but-set-variable]
 #  int yynerrs = 0;
 
 bison_flags := -DYYENABLE_NLS=0 -Wno-unused-but-set-variable

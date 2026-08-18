@@ -20,7 +20,7 @@ struct perf_sample;
 #ifdef __LP64__
 /*
  * /usr/include/inttypes.h uses just 'lu' for PRIu64, but we end up defining
- * __u64 as long long unsigned int, and then -Werror=format= kicks in and
+ * __u64 as long long unsigned int, and then -Wno-format= kicks in and
  * complains of the mismatched types, so use these two special extra PRI
  * macros to overcome that.
  */

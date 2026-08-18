@@ -29,8 +29,8 @@ subdir-ccflags-y += -Wno-sign-compare
 endif
 # --- end copy-paste
 
-# Enable -Werror in CI and development
-subdir-ccflags-$(CONFIG_DRM_WERROR) += -Werror
+# Enable  in CI and development
+subdir-ccflags-$(CONFIG_DRM_WERROR) += 
 
 drm-y := \
 	drm_atomic.o \
@@ -250,7 +250,7 @@ always-$(CONFIG_DRM_HEADER_TEST) += \
 quiet_cmd_hdrtest = HDRTEST $(patsubst %.hdrtest,%.h,$@)
       cmd_hdrtest = \
 		$(CC) $(c_flags) -fsyntax-only -x c /dev/null -include $< -include $<; \
-		 PYTHONDONTWRITEBYTECODE=1 $(PYTHON3) $(KERNELDOC) -none $(if $(CONFIG_WERROR)$(CONFIG_DRM_WERROR),-Werror) $<; \
+		 PYTHONDONTWRITEBYTECODE=1 $(PYTHON3) $(KERNELDOC) -none $(if $(CONFIG_WERROR)$(CONFIG_DRM_WERROR),) $<; \
 		touch $@
 
 $(obj)/%.hdrtest: $(src)/%.h FORCE

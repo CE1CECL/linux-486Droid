@@ -18,7 +18,7 @@ config DRM_WERROR
 	default n
 	help
 	  A kernel build should not cause any compiler warnings, and this
-	  enables the '-Werror' flag to enforce that rule in the drm subsystem.
+	  enables the '' flag to enforce that rule in the drm subsystem.
 
 	  The drm subsystem enables more warnings than the kernel default, so
 	  this config option is disabled by default.

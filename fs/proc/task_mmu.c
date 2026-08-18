@@ -1141,7 +1141,7 @@ static void show_smap_vma_flags(struct seq_file *m, struct vm_area_struct *vma)
 	 * needs to be 3 instead of previously set 2
 	 * (i.e. from [BITS_PER_LONG][2] to [BITS_PER_LONG][3])
 	 * to avoid spurious
-	 * -Werror=unterminated-string-initialization warning
+	 * -Wno-unterminated-string-initialization warning
 	 *  with GCC 15
 	 */
 	static const char mnemonics[BITS_PER_LONG][3] = {

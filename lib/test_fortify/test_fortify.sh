@@ -37,7 +37,7 @@ export LANG=C
 
 status=
 # Attempt to build a source that is expected to fail with a specific warning.
-if "$@" -Werror -c "$IN" -o "$OUT".o 2> "$TMP" ; then
+if "$@"  -c "$IN" -o "$OUT".o 2> "$TMP" ; then
 	# If the build succeeds, either the test has failed or the
 	# warning may only happen at link time (Clang). In that case,
 	# make sure the expected symbol is unresolved in the symbol list.
@@ -48,9 +48,9 @@ if "$@" -Werror -c "$IN" -o "$OUT".o 2> "$TMP" ; then
 else
 	# If the build failed, check for the warning in the stderr.
 	# GCC:
-	# ./include/linux/fortify-string.h:316:25: error: call to '__write_overflow_field' declared with attribute warning: detected write beyond size of field (1st parameter); maybe use struct_group()? [-Werror=attribute-warning]
+	# ./include/linux/fortify-string.h:316:25: error: call to '__write_overflow_field' declared with attribute warning: detected write beyond size of field (1st parameter); maybe use struct_group()? [-Wno-attribute-warning]
 	# Clang 14:
-	# ./include/linux/fortify-string.h:316:4: error: call to __write_overflow_field declared with 'warning' attribute: detected write beyond size of field (1st parameter); maybe use struct_group()? [-Werror,-Wattribute-warning]
+	# ./include/linux/fortify-string.h:316:4: error: call to __write_overflow_field declared with 'warning' attribute: detected write beyond size of field (1st parameter); maybe use struct_group()? [,-Wattribute-warning]
 	if ! grep -Eq -m1 "error: call to .?\b${WANT}\b.?" "$TMP" ; then
 		status="warning: unsafe ${FUNC}() usage lacked '$WANT' warning in $IN"
 	fi

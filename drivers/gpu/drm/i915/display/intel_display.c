@@ -4998,7 +4998,7 @@ pipe_config_pll_mismatch(struct drm_printer *p, bool fastset,
 {
 	struct intel_display *display = to_intel_display(crtc);
 
-	pipe_config_mismatch(p, fastset, crtc, name, " "); /* stupid -Werror=format-zero-length */
+	pipe_config_mismatch(p, fastset, crtc, name, " "); /* stupid -Wno-format-zero-length */
 
 	drm_printf(p, "expected:\n");
 	intel_dpll_dump_hw_state(display, p, a);

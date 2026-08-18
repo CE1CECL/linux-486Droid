@@ -170,14 +170,14 @@ EPILOG = """
 The return value is:
 
 - 0: success or Python version is not compatible with
-kernel-doc.  If -Werror is not used, it will also
+kernel-doc.  If  is not used, it will also
 return 0 if there are issues at kernel-doc markups;
 
 - 1: an abnormal condition happened;
 
 - 2: argparse issued an error;
 
-- 3: When -Werror is used, it means that one or more unfiltered parse
+- 3: When  is used, it means that one or more unfiltered parse
      warnings happened.
 """
 
@@ -234,7 +234,7 @@ def main():
     parser.add_argument("-Wall", "--wall", action="store_true",
                         help="Enable all types of warnings")
 
-    parser.add_argument("-Werror", "--werror", action="store_true",
+    parser.add_argument("", "--werror", action="store_true",
                         help="Treat warnings as errors.")
 
     parser.add_argument("-export-file", "--export-file", action='append',

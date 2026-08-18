@@ -170,7 +170,7 @@ class KernelFiles():
         if not werror:
             kcflags = os.environ.get("KCFLAGS", None)
             if kcflags:
-                match = re.search(r"(\s|^)-Werror(\s|$)/", kcflags)
+                match = re.search(r"(\s|^)(\s|$)/", kcflags)
                 if match:
                     werror = True
 

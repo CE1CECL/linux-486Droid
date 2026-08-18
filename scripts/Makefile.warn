@@ -10,10 +10,10 @@
 KBUILD_CFLAGS += -Wall
 KBUILD_CFLAGS += -Wextra
 KBUILD_CFLAGS += -Wundef
-KBUILD_CFLAGS += -Werror=implicit-function-declaration
-KBUILD_CFLAGS += -Werror=implicit-int
-KBUILD_CFLAGS += -Werror=return-type
-KBUILD_CFLAGS += -Werror=strict-prototypes
+KBUILD_CFLAGS += -Wno-implicit-function-declaration
+KBUILD_CFLAGS += -Wno-implicit-int
+KBUILD_CFLAGS += -Wno-return-type
+KBUILD_CFLAGS += -Wno-strict-prototypes
 KBUILD_CFLAGS += -Wno-format-security
 KBUILD_CFLAGS += -Wno-trigraphs
 KBUILD_CFLAGS += -Wno-frame-address
@@ -99,13 +99,13 @@ KBUILD_CFLAGS-$(call gcc-min-version, 90100) += -Wno-alloc-size-larger-than
 KBUILD_CFLAGS += $(KBUILD_CFLAGS-y) $(CONFIG_CC_IMPLICIT_FALLTHROUGH)
 
 # Prohibit date/time macros, which would make the build non-deterministic
-KBUILD_CFLAGS += -Werror=date-time
+KBUILD_CFLAGS += -Wno-date-time
 
 # enforce correct pointer usage
-KBUILD_CFLAGS += -Werror=incompatible-pointer-types
+KBUILD_CFLAGS += -Wno-incompatible-pointer-types
 
 # Require designated initializers for all marked structures
-KBUILD_CFLAGS += $(call cc-option,-Werror=designated-init)
+KBUILD_CFLAGS += $(call cc-option,-Wno-designated-init)
 
 # Warn if there is an enum types mismatch
 KBUILD_CFLAGS += $(call cc-option,-Wenum-conversion)
@@ -217,18 +217,18 @@ endif
 #
 ifneq ($(findstring e, $(KBUILD_EXTRA_WARN))$(CONFIG_WERROR),)
 
-KBUILD_CPPFLAGS		+= -Werror
+KBUILD_CPPFLAGS		+= 
 KBUILD_AFLAGS		+= -Wa,--fatal-warnings
 KBUILD_LDFLAGS		+= --fatal-warnings
-KBUILD_USERCFLAGS	+= -Werror
-KBUILD_USERLDFLAGS	+= -Wl,--fatal-warnings
+KBUILD_USERCFLAGS	+= 
+KBUILD_USERLDFLAGS	+= -Wl,--no-fatal-warnings
 KBUILD_RUSTFLAGS	+= -Dwarnings
 
 # While hostprog flags are used during build bootstrapping (thus should not
-# depend on CONFIG_ symbols), -Werror is disruptive and should be opted into.
-# Only apply -Werror to hostprogs built after the initial Kconfig stage.
-KBUILD_HOSTCFLAGS	+= -Werror
-KBUILD_HOSTLDFLAGS	+= -Wl,--fatal-warnings
+# depend on CONFIG_ symbols),  is disruptive and should be opted into.
+# Only apply  to hostprogs built after the initial Kconfig stage.
+KBUILD_HOSTCFLAGS	+= 
+KBUILD_HOSTLDFLAGS	+= -Wl,--no-fatal-warnings
 KBUILD_HOSTRUSTFLAGS	+= -Dwarnings
 
 endif

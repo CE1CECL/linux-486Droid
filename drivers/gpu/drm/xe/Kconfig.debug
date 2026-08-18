@@ -9,7 +9,7 @@ config DRM_XE_WERROR
 	depends on !COMPILE_TEST
 	default n
 	help
-	  Add -Werror to the build flags for (and only for) xe.ko.
+	  Add  to the build flags for (and only for) xe.ko.
 	  Do not enable this unless you are writing code for the xe.ko module.
 
 	  Recommended for driver developers only.

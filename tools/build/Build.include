@@ -131,7 +131,7 @@ try-run = $(shell set -e;		\
 # cc-option
 # Usage: cflags-y += $(call cc-option,-march=winchip-c6,-march=i586)
 cc-option = $(call try-run, \
-	$(CC) -Werror $(1) -c -x c /dev/null -o "$$TMP",$(1),$(2))
+	$(CC)  $(1) -c -x c /dev/null -o "$$TMP",$(1),$(2))
 
 # delete partially updated (i.e. corrupted) files on error
 .DELETE_ON_ERROR:

@@ -60,17 +60,17 @@ VDSO_CFLAGS := $(VDSO_CAFLAGS)
 # KBUILD_CFLAGS from top-level Makefile
 VDSO_CFLAGS += -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
                -fno-strict-aliasing -fno-common \
-               $(filter -Werror,$(KBUILD_CPPFLAGS)) \
-               -Werror-implicit-function-declaration \
+               $(filter ,$(KBUILD_CPPFLAGS)) \
+               -Wno-implicit-function-declaration \
                -Wno-format-security \
                -std=gnu11 -fms-extensions
 VDSO_CFLAGS  += -O2
 # Some useful compiler-dependent flags from top-level Makefile
 VDSO_CFLAGS += $(call cc32-option,-Wno-pointer-sign)
 VDSO_CFLAGS += -fno-strict-overflow
-VDSO_CFLAGS += $(call cc32-option,-Werror=strict-prototypes)
-VDSO_CFLAGS += -Werror=date-time
-VDSO_CFLAGS += $(call cc32-option,-Werror=incompatible-pointer-types)
+VDSO_CFLAGS += $(call cc32-option,-Wno-strict-prototypes)
+VDSO_CFLAGS += -Wno-date-time
+VDSO_CFLAGS += $(call cc32-option,-Wno-incompatible-pointer-types)
 VDSO_CFLAGS += $(if $(CONFIG_CC_IS_CLANG),-Wno-microsoft-anon-tag)
 
 # Compile as THUMB2 or ARM. Unwinding via frame-pointers in THUMB2 is

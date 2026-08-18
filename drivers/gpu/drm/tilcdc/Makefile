@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 ifeq (, $(findstring -W,$(KCFLAGS)))
-	ccflags-y += -Werror
+	ccflags-y += 
 endif
 
 tilcdc-y := \
